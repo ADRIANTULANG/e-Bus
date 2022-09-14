@@ -17,12 +17,14 @@ class AdminHomeController extends GetxController {
   TextEditingController adminName = TextEditingController();
   TextEditingController adminUsername = TextEditingController();
   TextEditingController adminPassword = TextEditingController();
+  RxBool isLoading = true.obs;
 
   @override
   void onInit() async {
     await getMonetizationAmountDevPercentage();
     await getMonetizationAmountFareValue();
     await getTickets();
+    isLoading(false);
     super.onInit();
   }
 

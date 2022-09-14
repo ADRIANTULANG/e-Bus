@@ -13,9 +13,12 @@ class ConductorsHomeController extends GetxController {
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
 
+  RxBool isLoading = true.obs;
+
   @override
-  void onInit() {
-    getBusDetails();
+  void onInit() async {
+    await getBusDetails();
+    isLoading(false);
     super.onInit();
   }
 

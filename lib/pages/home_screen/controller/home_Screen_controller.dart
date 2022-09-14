@@ -29,9 +29,12 @@ class HomeScreenController extends GetxController {
   RxString isSelectedPaymentGateway = "".obs;
 
   RxString passengerBalance = "0.0".obs;
+
+  RxBool isLoading = true.obs;
   @override
   void onInit() async {
-    setBalance();
+    await setBalance();
+    isLoading(false);
     super.onInit();
   }
 
@@ -39,7 +42,7 @@ class HomeScreenController extends GetxController {
     passengerBalance.value = await double.parse(
             Get.find<StorageServices>().storage.read('pasBalance'))
         .toStringAsFixed(1);
-    getPassengersTickets();
+    await getPassengersTickets();
   }
 
   @override
@@ -49,7 +52,7 @@ class HomeScreenController extends GetxController {
 
   getPassengersTickets() async {
     var result = await HomeScreenApi.getPassengersTickets();
-    passengersTicketList.assignAll(result);
+    passengersTicketList.assignAll(result.reversed.toList());
   }
 
   getTicketData({required String ticketID}) async {
