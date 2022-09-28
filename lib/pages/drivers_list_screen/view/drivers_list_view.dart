@@ -84,6 +84,48 @@ class DriversListView extends GetView<DriversListController> {
                                 ),
                               ],
                             ),
+                            SizedBox(
+                              height: 1.h,
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  "Driver Address: ",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 13.sp,
+                                      letterSpacing: 1.5),
+                                ),
+                                Text(
+                                  controller.driverList[index].driver_address,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w300,
+                                      fontSize: 13.sp,
+                                      letterSpacing: 1.5),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 1.h,
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  "Driver Contact: ",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 13.sp,
+                                      letterSpacing: 1.5),
+                                ),
+                                Text(
+                                  controller.driverList[index].driver_contact,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w300,
+                                      fontSize: 13.sp,
+                                      letterSpacing: 1.5),
+                                ),
+                              ],
+                            ),
                           ],
                         ),
                       ),

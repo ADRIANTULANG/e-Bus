@@ -87,6 +87,48 @@ class ConductorsListView extends GetView<ConductorsListController> {
                             Row(
                               children: [
                                 Text(
+                                  "Address: ",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 13.sp,
+                                      letterSpacing: 1.5),
+                                ),
+                                Text(
+                                  controller.conductorsList[index].con_address,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w300,
+                                      fontSize: 13.sp,
+                                      letterSpacing: 1.5),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 1.h,
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  "Contact: ",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 13.sp,
+                                      letterSpacing: 1.5),
+                                ),
+                                Text(
+                                  controller.conductorsList[index].con_contact,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w300,
+                                      fontSize: 13.sp,
+                                      letterSpacing: 1.5),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 1.h,
+                            ),
+                            Row(
+                              children: [
+                                Text(
                                   "Bus: ",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w500,

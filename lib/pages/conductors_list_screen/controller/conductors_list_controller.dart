@@ -12,6 +12,8 @@ class ConductorsListController extends GetxController {
   TextEditingController conductorname = TextEditingController();
   TextEditingController conductorusername = TextEditingController();
   TextEditingController conductorpassword = TextEditingController();
+  TextEditingController contactno = TextEditingController();
+  TextEditingController address = TextEditingController();
   RxString busPlateno = "Plate no".obs;
   RxString busId = "".obs;
   @override
@@ -41,6 +43,8 @@ class ConductorsListController extends GetxController {
         con_name: conductorname.text,
         con_username: conductorusername.text,
         con_pass: conductorpassword.text,
+        con_address: address.text,
+        con_contact: contactno.text,
         con_bus_id: busId.value);
     if (isSuccess == true) {
       Get.back();

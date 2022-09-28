@@ -58,12 +58,16 @@ class DriverListApi {
 
   static Future createDriver({
     required String drivername,
+    required String contact,
+    required String address,
   }) async {
     try {
       var response = await client.post(
         Uri.parse('${AppEndpoint.endPointDomain}/create-driver.php'),
         body: {
           "drivername": drivername,
+          "contact": contact,
+          "address": address,
         },
       );
 

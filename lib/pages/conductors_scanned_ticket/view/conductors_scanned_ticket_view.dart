@@ -41,7 +41,7 @@ class ConductorsScannedTicketView
                       padding: EdgeInsets.only(bottom: 2.h),
                       child: TicketWidget(
                         width: 100.w,
-                        height: 20.h,
+                        height: 25.h,
                         color: AppColor.mainColors,
                         isCornerRounded: false,
                         padding:
@@ -65,7 +65,7 @@ class ConductorsScannedTicketView
                                   Container(
                                     alignment: Alignment.topLeft,
                                     // color: Colors.red,
-                                    height: 18.h,
+                                    height: 23.h,
                                     width: 65.w,
                                     child: Column(
                                       children: [
@@ -178,6 +178,68 @@ class ConductorsScannedTicketView
                                                 controller
                                                     .scannedTicketList[index]
                                                     .pasName,
+                                                style: TextStyle(
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    fontWeight: FontWeight.w300,
+                                                    fontSize: 12.sp,
+                                                    letterSpacing: 1.5),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              "Driver:",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w300,
+                                                  fontSize: 12.sp,
+                                                  letterSpacing: 1.5),
+                                            ),
+                                            Container(
+                                              width: 40.w,
+                                              alignment: Alignment.centerRight,
+                                              // color: Colors.red,
+                                              child: Text(
+                                                controller
+                                                    .scannedTicketList[index]
+                                                    .driver_name,
+                                                style: TextStyle(
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    fontWeight: FontWeight.w300,
+                                                    fontSize: 12.sp,
+                                                    letterSpacing: 1.5),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              "Bus:",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w300,
+                                                  fontSize: 12.sp,
+                                                  letterSpacing: 1.5),
+                                            ),
+                                            Container(
+                                              width: 40.w,
+                                              alignment: Alignment.centerRight,
+                                              // color: Colors.red,
+                                              child: Text(
+                                                controller
+                                                    .scannedTicketList[index]
+                                                    .bus_plate_number,
                                                 style: TextStyle(
                                                     overflow:
                                                         TextOverflow.ellipsis,

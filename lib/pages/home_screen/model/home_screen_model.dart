@@ -14,6 +14,9 @@ class PassengerTicketsModel {
     required this.destination,
     required this.transStatus,
     required this.transFareAmount,
+    this.con_name,
+    this.bus_plate_number,
+    this.driver_name,
   });
 
   String transId;
@@ -21,6 +24,9 @@ class PassengerTicketsModel {
   String transFareAmount;
   String origin;
   String destination;
+  String? con_name;
+  String? bus_plate_number;
+  String? driver_name;
 
   factory PassengerTicketsModel.fromJson(Map<String, dynamic> json) =>
       PassengerTicketsModel(
@@ -29,6 +35,9 @@ class PassengerTicketsModel {
         transFareAmount: json["trans_fare_amount"],
         origin: json["origin"],
         destination: json["destination"],
+        con_name: json["con_name"] ?? "-",
+        bus_plate_number: json["bus_plate_number"] ?? "-",
+        driver_name: json["driver_name"] ?? "-",
       );
 
   Map<String, dynamic> toJson() => {
@@ -37,6 +46,9 @@ class PassengerTicketsModel {
         "trans_fare_amount": transFareAmount,
         "origin": origin,
         "destination": destination,
+        "con_name": con_name,
+        "bus_plate_number": bus_plate_number,
+        "driver_name": driver_name,
       };
 }
 

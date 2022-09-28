@@ -61,6 +61,8 @@ class ConductorsListApi {
     required String con_username,
     required String con_pass,
     required String con_bus_id,
+    required String con_contact,
+    required String con_address,
   }) async {
     try {
       var response = await client.post(
@@ -70,6 +72,8 @@ class ConductorsListApi {
           "con_username": con_username,
           "con_pass": con_pass,
           "con_bus_id": con_bus_id,
+          "con_contact": con_contact,
+          "con_address": con_address,
         },
       );
 

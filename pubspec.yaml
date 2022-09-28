@@ -48,7 +48,7 @@ dependencies:
   #qr flutter
   qr_flutter: ^4.0.0
   #qr code scanner
-  qr_code_scanner: ^0.4.0
+  qr_code_scanner: ^1.0.1
   #ticketUI
   ticket_widget: ^0.0.1
   #Google Maps
@@ -61,6 +61,12 @@ dependencies:
   geocoding: ^2.0.5
   #geolocator
   geolocator: ^9.0.1
+  #permision handler
+  permission_handler: ^10.0.2
+  #csv
+  csv: ^5.0.1
+  #path provider
+  path_provider: ^2.0.11
 
 flutter_icons:
   android: true

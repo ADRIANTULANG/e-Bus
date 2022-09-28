@@ -218,7 +218,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                         },
                                         child: TicketWidget(
                                           width: 100.w,
-                                          height: 20.h,
+                                          height: 25.h,
                                           color: AppColor.mainColors,
                                           shadow: [
                                             BoxShadow(
@@ -254,7 +254,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                                       alignment:
                                                           Alignment.topLeft,
                                                       // color: Colors.red,
-                                                      height: 18.h,
+                                                      height: 22.h,
                                                       width: 65.w,
                                                       child: Column(
                                                         children: [
@@ -368,6 +368,138 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                                                       .passengersTicketList[
                                                                           index]
                                                                       .destination,
+                                                                  style: TextStyle(
+                                                                      overflow:
+                                                                          TextOverflow
+                                                                              .ellipsis,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w300,
+                                                                      fontSize:
+                                                                          12.sp,
+                                                                      letterSpacing:
+                                                                          1.5),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Row(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Text(
+                                                                "Driver: ",
+                                                                style: TextStyle(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                    fontSize:
+                                                                        12.sp,
+                                                                    letterSpacing:
+                                                                        1.5),
+                                                              ),
+                                                              Container(
+                                                                width: 40.w,
+                                                                alignment: Alignment
+                                                                    .centerRight,
+                                                                // color: Colors.red,
+                                                                child: Text(
+                                                                  controller
+                                                                      .passengersTicketList[
+                                                                          index]
+                                                                      .driver_name!,
+                                                                  style: TextStyle(
+                                                                      overflow:
+                                                                          TextOverflow
+                                                                              .ellipsis,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w300,
+                                                                      fontSize:
+                                                                          12.sp,
+                                                                      letterSpacing:
+                                                                          1.5),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Row(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Text(
+                                                                "Conductor: ",
+                                                                style: TextStyle(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                    fontSize:
+                                                                        12.sp,
+                                                                    letterSpacing:
+                                                                        1.5),
+                                                              ),
+                                                              Container(
+                                                                width: 40.w,
+                                                                alignment: Alignment
+                                                                    .centerRight,
+                                                                // color: Colors.red,
+                                                                child: Text(
+                                                                  controller
+                                                                      .passengersTicketList[
+                                                                          index]
+                                                                      .con_name!,
+                                                                  style: TextStyle(
+                                                                      overflow:
+                                                                          TextOverflow
+                                                                              .ellipsis,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w300,
+                                                                      fontSize:
+                                                                          12.sp,
+                                                                      letterSpacing:
+                                                                          1.5),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Row(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Text(
+                                                                "Plate no: ",
+                                                                style: TextStyle(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                    fontSize:
+                                                                        12.sp,
+                                                                    letterSpacing:
+                                                                        1.5),
+                                                              ),
+                                                              Container(
+                                                                width: 40.w,
+                                                                alignment: Alignment
+                                                                    .centerRight,
+                                                                // color: Colors.red,
+                                                                child: Text(
+                                                                  controller
+                                                                      .passengersTicketList[
+                                                                          index]
+                                                                      .bus_plate_number!,
                                                                   style: TextStyle(
                                                                       overflow:
                                                                           TextOverflow

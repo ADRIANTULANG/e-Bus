@@ -83,6 +83,7 @@ class QrResultModel {
     required this.destination,
     required this.pasName,
     required this.transStatus,
+    required this.trans_date_created,
   });
 
   String transId;
@@ -91,6 +92,7 @@ class QrResultModel {
   String destination;
   String pasName;
   String transStatus;
+  String trans_date_created;
 
   factory QrResultModel.fromJson(Map<String, dynamic> json) => QrResultModel(
         transId: json["trans_id"],
@@ -99,6 +101,7 @@ class QrResultModel {
         destination: json["destination"],
         pasName: json["pas_name"],
         transStatus: json["trans_status"],
+        trans_date_created: json["trans_date_created"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -108,5 +111,6 @@ class QrResultModel {
         "destination": destination,
         "pas_name": pasName,
         "trans_status": transStatus,
+        "trans_date_created": trans_date_created,
       };
 }

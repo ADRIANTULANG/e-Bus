@@ -15,6 +15,8 @@ class ConductorsModel {
     required this.conPass,
     required this.conBusId,
     required this.busPlateNumber,
+    required this.con_contact,
+    required this.con_address,
   });
 
   String conId;
@@ -23,6 +25,8 @@ class ConductorsModel {
   String conPass;
   String conBusId;
   String busPlateNumber;
+  String con_contact;
+  String con_address;
 
   factory ConductorsModel.fromJson(Map<String, dynamic> json) =>
       ConductorsModel(
@@ -31,6 +35,8 @@ class ConductorsModel {
         conUsername: json["con_username"],
         conPass: json["con_pass"],
         conBusId: json["con_bus_id"],
+        con_contact: json["con_contact"],
+        con_address: json["con_address"],
         busPlateNumber: json["bus_plate_number"] ?? "-",
       );
 
@@ -41,6 +47,8 @@ class ConductorsModel {
         "con_pass": conPass,
         "con_bus_id": conBusId,
         "bus_plate_number": busPlateNumber,
+        "con_contact": con_contact,
+        "con_address": con_address,
       };
 }
 

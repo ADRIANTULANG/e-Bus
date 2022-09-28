@@ -12,11 +12,13 @@ class QrScannedController extends GetxController {
   RxString fareAmount = "".obs;
   RxString status = "".obs;
   RxBool isValid = false.obs;
+  RxBool isLoading = true.obs;
   @override
   void onInit() async {
     ticketID.value = await Get.arguments['ticketID'];
     print(ticketID.value);
-    getTicketData();
+    await getTicketData();
+    isLoading(false);
     super.onInit();
   }
 

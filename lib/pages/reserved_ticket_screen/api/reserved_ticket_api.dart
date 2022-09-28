@@ -205,4 +205,51 @@ class ReservedTicketApi {
       return [];
     }
   }
+
+  static Future updateBalance({required String newbalance}) async {
+    try {
+      var response = await client.post(
+        Uri.parse('${AppEndpoint.endPointDomain}/update-passenger-balance.php'),
+        body: {
+          "newBalance": newbalance.toString(),
+          "passengerID": Get.find<StorageServices>().storage.read('pasId')
+        },
+      );
+
+      if (jsonDecode(response.body)['message'] == "Success") {
+        return true;
+      } else {
+        return false;
+      }
+    } on TimeoutException catch (_) {
+      Get.snackbar(
+        "Update Balance Error: Timeout",
+        "Oops, something went wrong. Please try again later.",
+        colorText: Colors.white,
+        backgroundColor: AppColor.mainColors,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      return false;
+    } on SocketException catch (_) {
+      print(_);
+      Get.snackbar(
+        "update Balance  Error: Socket",
+        "Oops, something went wrong. Please try again later.",
+        colorText: Colors.white,
+        backgroundColor: AppColor.mainColors,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      return false;
+    } catch (e) {
+      print(e);
+      Get.snackbar(
+        "update Balance  Error",
+        "Oops, something went wrong. Please try again later.",
+        colorText: Colors.white,
+        backgroundColor: AppColor.mainColors,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      return false;
+    }
+  }
 }

@@ -8,6 +8,8 @@ import '../model/driver_list_model.dart';
 class DriversListController extends GetxController {
   RxList<DriverModel> driverList = <DriverModel>[].obs;
   TextEditingController drivername = TextEditingController();
+  TextEditingController contactno = TextEditingController();
+  TextEditingController address = TextEditingController();
   @override
   void onInit() {
     getDrivers();
@@ -21,12 +23,15 @@ class DriversListController extends GetxController {
 
   getDrivers() async {
     var result = await DriverListApi.getDrivers();
-    driverList.assignAll(result);
+    driverList.assignAll(result.reversed.toList());
   }
 
   createDriver() async {
-    bool isSuccess =
-        await DriverListApi.createDriver(drivername: drivername.text);
+    bool isSuccess = await DriverListApi.createDriver(
+      drivername: drivername.text,
+      contact: contactno.text,
+      address: address.text,
+    );
     if (isSuccess == true) {
       Get.back();
       Get.snackbar(

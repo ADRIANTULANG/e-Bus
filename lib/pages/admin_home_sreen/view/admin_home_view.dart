@@ -308,6 +308,51 @@ class AdminHomeView extends GetView<AdminHomeController> {
                           ],
                         ),
                       ),
+                      Container(
+                        height: 6.h,
+                        width: 100.w,
+                        child: Row(
+                          children: [
+                            Expanded(child: SizedBox()),
+                            InkWell(
+                              onTap: () {
+                                controller.generateCsvFile();
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(1.w),
+                                decoration: BoxDecoration(
+                                    color: AppColor.mainColors,
+                                    borderRadius: BorderRadius.circular(3),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          blurRadius: 4,
+                                          spreadRadius: 1,
+                                          color: Colors.grey),
+                                    ]),
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.settings,
+                                      size: 13.sp,
+                                    ),
+                                    SizedBox(
+                                      width: 1.w,
+                                    ),
+                                    Text(
+                                      "CSV",
+                                      style: TextStyle(
+                                        letterSpacing: 1.5,
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                       SizedBox(
                         height: 2.h,
                       ),
@@ -424,7 +469,7 @@ class AdminHomeView extends GetView<AdminHomeController> {
                                 padding: EdgeInsets.only(bottom: 2.h),
                                 child: TicketWidget(
                                   width: 100.w,
-                                  height: 20.h,
+                                  height: 25.h,
                                   color: AppColor.mainColors,
                                   isCornerRounded: false,
                                   padding: EdgeInsets.only(
@@ -450,7 +495,7 @@ class AdminHomeView extends GetView<AdminHomeController> {
                                             Container(
                                               alignment: Alignment.topLeft,
                                               // color: Colors.red,
-                                              height: 18.h,
+                                              height: 24.h,
                                               width: 65.w,
                                               child: Column(
                                                 children: [
@@ -590,6 +635,126 @@ class AdminHomeView extends GetView<AdminHomeController> {
                                                               .ticketsList[
                                                                   index]
                                                               .pasName,
+                                                          style: TextStyle(
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w300,
+                                                              fontSize: 12.sp,
+                                                              letterSpacing:
+                                                                  1.5),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        "Driver:",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w300,
+                                                            fontSize: 12.sp,
+                                                            letterSpacing: 1.5),
+                                                      ),
+                                                      Container(
+                                                        width: 40.w,
+                                                        alignment: Alignment
+                                                            .centerRight,
+                                                        // color: Colors.red,
+                                                        child: Text(
+                                                          controller
+                                                              .ticketsList[
+                                                                  index]
+                                                              .driver_name!,
+                                                          style: TextStyle(
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w300,
+                                                              fontSize: 12.sp,
+                                                              letterSpacing:
+                                                                  1.5),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        "Con:",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w300,
+                                                            fontSize: 12.sp,
+                                                            letterSpacing: 1.5),
+                                                      ),
+                                                      Container(
+                                                        width: 40.w,
+                                                        alignment: Alignment
+                                                            .centerRight,
+                                                        // color: Colors.red,
+                                                        child: Text(
+                                                          controller
+                                                              .ticketsList[
+                                                                  index]
+                                                              .con_name!,
+                                                          style: TextStyle(
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w300,
+                                                              fontSize: 12.sp,
+                                                              letterSpacing:
+                                                                  1.5),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        "Bus:",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w300,
+                                                            fontSize: 12.sp,
+                                                            letterSpacing: 1.5),
+                                                      ),
+                                                      Container(
+                                                        width: 40.w,
+                                                        alignment: Alignment
+                                                            .centerRight,
+                                                        // color: Colors.red,
+                                                        child: Text(
+                                                          controller
+                                                              .ticketsList[
+                                                                  index]
+                                                              .bus_plate_number!,
                                                           style: TextStyle(
                                                               overflow:
                                                                   TextOverflow

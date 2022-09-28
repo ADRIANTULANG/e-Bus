@@ -58,6 +58,8 @@ class SignUpScreenApi {
     required String pas_name,
     required String pas_username,
     required String pas_password,
+    required String pas_email,
+    required String pas_contact,
   }) async {
     try {
       var response = await client.post(
@@ -66,6 +68,8 @@ class SignUpScreenApi {
           "pas_name": pas_name,
           "pas_username": pas_username,
           "pas_password": pas_password,
+          "pas_email": pas_email,
+          "pas_contact": pas_contact,
         },
       );
 

@@ -8,6 +8,9 @@ class SignUpScreenController extends GetxController {
   TextEditingController name = TextEditingController();
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
+  TextEditingController contactno = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController repeatpassword = TextEditingController();
   @override
   void onInit() {
     super.onInit();
@@ -22,6 +25,8 @@ class SignUpScreenController extends GetxController {
     bool isSucces = await SignUpScreenApi.createPassenger(
         pas_name: name.text,
         pas_username: username.text,
+        pas_email: email.text,
+        pas_contact: contactno.text,
         pas_password: password.text);
     if (isSucces == true) {
       Get.back();

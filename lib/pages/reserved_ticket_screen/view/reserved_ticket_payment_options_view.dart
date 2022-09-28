@@ -1,9 +1,11 @@
+import 'package:ebus/services/storage_services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../constant/color_class.dart';
 import '../../../constant/peso_sign.dart';
+import '../../home_screen/controller/home_Screen_controller.dart';
 import '../controller/reserved_ticket_controller.dart';
 
 class ReservedTicketPaymentOptions extends GetView<ReservedTicketController> {
@@ -66,6 +68,7 @@ class ReservedTicketPaymentOptions extends GetView<ReservedTicketController> {
                           controller.isSelectedPaymentGateway.value = "Gcash";
                         }
                         controller.isPaymaya.value = false;
+                        controller.isEwallet.value = false;
                       }),
                 ),
                 Container(
@@ -82,12 +85,11 @@ class ReservedTicketPaymentOptions extends GetView<ReservedTicketController> {
                       onChanged: (value) {
                         if (controller.isPaymaya.value == true) {
                           controller.isPaymaya.value = false;
-                          controller.isSelectedPaymentGateway.value = "";
                         } else {
                           controller.isPaymaya.value = true;
-                          controller.isSelectedPaymentGateway.value = "Paymaya";
                         }
                         controller.isCheckGcash.value = false;
+                        controller.isEwallet.value = false;
                       }),
                 ),
                 SizedBox(
@@ -96,6 +98,38 @@ class ReservedTicketPaymentOptions extends GetView<ReservedTicketController> {
                 Container(
                   height: 8.h,
                   child: Image.asset("assets/images/paymaya.png"),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Obx(
+                  () => Checkbox(
+                      value: controller.isEwallet.value,
+                      onChanged: (value) {
+                        if (controller.isEwallet.value == true) {
+                          controller.isEwallet.value = false;
+                        } else {
+                          controller.isEwallet.value = true;
+                        }
+                        controller.isCheckGcash.value = false;
+                        controller.isPaymaya.value = false;
+                      }),
+                ),
+                SizedBox(
+                  width: 7.w,
+                ),
+                Container(
+                  height: 8.h,
+                  alignment: Alignment.center,
+                  child: Text(
+                    "E-Wallet",
+                    style: TextStyle(
+                      fontSize: 18.sp,
+                      letterSpacing: 1.5,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -134,6 +168,7 @@ class ReservedTicketPaymentOptions extends GetView<ReservedTicketController> {
                   ? InkWell(
                       onTap: () {
                         if (controller.isCheckGcash.value == false &&
+                            controller.isEwallet.value == false &&
                             controller.isPaymaya.value == false) {
                           Get.snackbar(
                               "Message", "Please Select a Payment Options",
@@ -142,7 +177,30 @@ class ReservedTicketPaymentOptions extends GetView<ReservedTicketController> {
                               snackPosition: SnackPosition.TOP,
                               duration: Duration(seconds: 3));
                         } else {
-                          controller.createTicket();
+                          var amount = double.parse(
+                                  Get.find<HomeScreenController>()
+                                      .passengerBalance
+                                      .value) -
+                              controller.fareTotalAmount.value;
+                          if (controller.isEwallet.value == true) {
+                            if (amount < 0) {
+                              Get.snackbar("Message", "Not enough balance",
+                                  colorText: Colors.white,
+                                  backgroundColor: AppColor.mainColors,
+                                  snackPosition: SnackPosition.TOP,
+                                  duration: Duration(seconds: 3));
+                            } else {
+                              Get.find<StorageServices>().storage.write(
+                                  "pasBalance", amount.toStringAsFixed(2));
+                              Get.find<HomeScreenController>().setBalance();
+                              controller.updateBalance(
+                                  newbalance: amount.toStringAsFixed(2));
+                              controller.createTicket();
+                            }
+                          } else {
+                            controller.createTicket();
+                          }
+
                           // Get.back();
                           // Get.back();
                           // controller.updateClinicSubscription();

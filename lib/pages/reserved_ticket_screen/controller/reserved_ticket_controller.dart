@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
 import '../../../constant/color_class.dart';
+import '../../home_screen/controller/home_Screen_controller.dart';
 import '../api/reserved_ticket_api.dart';
 import '../model/reserved_tickets_model.dart';
 import '../view/reservation_ticket_qr_view.dart';
@@ -19,6 +21,7 @@ class ReservedTicketController extends GetxController {
 
   RxBool isCheckGcash = false.obs;
   RxBool isPaymaya = false.obs;
+  RxBool isEwallet = false.obs;
   RxBool isSubscribing = false.obs;
 
   RxString isSelectedPaymentGateway = "".obs;
@@ -43,6 +46,7 @@ class ReservedTicketController extends GetxController {
   RxString resultdestinationName = "".obs;
   RxString resultfareAmount = "".obs;
   RxString resultstatus = "".obs;
+  RxString resultdate = "".obs;
 
   @override
   void onInit() async {
@@ -130,6 +134,7 @@ class ReservedTicketController extends GetxController {
   }
 
   createTicket() async {
+    isSubscribing(true);
     DateTime d = DateTime.now();
     String year = d.year.toString();
     String month = d.month.toString();
@@ -170,6 +175,8 @@ class ReservedTicketController extends GetxController {
       resultdestinationName.value = result[0].destination;
       resultfareAmount.value = result[0].transFareAmount;
       resultstatus.value = result[0].transStatus;
+      resultdate.value = DateFormat.yMMMEd()
+          .format(DateTime.parse(result[0].trans_date_created));
       Get.to(() => ReservationTicketResult());
       Get.snackbar(
         "Message",
@@ -179,5 +186,17 @@ class ReservedTicketController extends GetxController {
         snackPosition: SnackPosition.TOP,
       );
     }
+    isSubscribing(false);
+  }
+
+  updateBalance({required String newbalance}) async {
+    await ReservedTicketApi.updateBalance(newbalance: newbalance);
+  }
+
+  getBack() {
+    Get.back();
+    Get.back();
+    Get.back();
+    Get.find<HomeScreenController>().getPassengersTickets();
   }
 }
