@@ -124,11 +124,11 @@ class BusPointsView extends GetView<BusPointsController> {
                                   name: controller
                                       .busPointsList[index].pAddressName);
                             },
-                            onLongPress: () {
-                              controller.deleteBusPoints(
-                                  buspointID:
-                                      controller.busPointsList[index].pId);
-                            },
+                            // onLongPress: () {
+                            //   controller.deleteBusPoints(
+                            //       buspointID:
+                            //           controller.busPointsList[index].pId);
+                            // },
                             child: Container(
                               padding: EdgeInsets.only(
                                   left: 2.w, top: 2.h, bottom: 2.h, right: 2.w),
