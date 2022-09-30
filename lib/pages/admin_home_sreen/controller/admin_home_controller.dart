@@ -33,6 +33,16 @@ class AdminHomeController extends GetxController {
     super.onInit();
   }
 
+  onRefresh() async {
+    percentage.value = 0.0;
+    fareValue.value = 0.0;
+    developersEarnings.value = 0.0;
+    totalFare.value = 0.0;
+    await getMonetizationAmountDevPercentage();
+    await getMonetizationAmountFareValue();
+    await getTickets();
+  }
+
   @override
   void onClose() {
     super.onClose();

@@ -20,6 +20,10 @@ class ConductorsScannedTicketController extends GetxController {
 
   getConductorsScannedTickets() async {
     var result = await ConductorssCannedTicketApi.getConductorsScannedTickets();
-    scannedTicketList.assignAll(result);
+    scannedTicketList.assignAll(result.reversed.toList());
+  }
+
+  onRefresh() async {
+    getConductorsScannedTickets();
   }
 }

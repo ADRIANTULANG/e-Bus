@@ -13,137 +13,161 @@ class DriversListView extends GetView<DriversListController> {
   Widget build(BuildContext context) {
     Get.put(DriversListController());
     return Scaffold(
-      body: Container(
-        height: 100.h,
-        width: 100.w,
-        padding: EdgeInsets.only(left: 5.w, right: 5.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 7.h,
-            ),
-            Text(
-              "Drivers",
-              style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 22.sp,
-                  letterSpacing: 1.5),
-            ),
-            Expanded(
-                child: Container(
-              child: Obx(
-                () => ListView.builder(
-                  itemCount: controller.driverList.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Padding(
-                      padding: EdgeInsets.only(bottom: 1.h),
-                      child: Container(
-                        padding: EdgeInsets.only(
-                            left: 2.w, right: 2.w, top: 1.h, bottom: 1.h),
-                        decoration: BoxDecoration(border: Border.all()),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  "Driver ID: ",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 13.sp,
-                                      letterSpacing: 1.5),
-                                ),
-                                Text(
-                                  controller.driverList[index].driverId,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w300,
-                                      fontSize: 13.sp,
-                                      letterSpacing: 1.5),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 1.h,
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  "Driver Name: ",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 13.sp,
-                                      letterSpacing: 1.5),
-                                ),
-                                Text(
-                                  controller.driverList[index].driverName,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w300,
-                                      fontSize: 13.sp,
-                                      letterSpacing: 1.5),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 1.h,
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  "Driver Address: ",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 13.sp,
-                                      letterSpacing: 1.5),
-                                ),
-                                Text(
-                                  controller.driverList[index].driver_address,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w300,
-                                      fontSize: 13.sp,
-                                      letterSpacing: 1.5),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 1.h,
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  "Driver Contact: ",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 13.sp,
-                                      letterSpacing: 1.5),
-                                ),
-                                Text(
-                                  controller.driverList[index].driver_contact,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w300,
-                                      fontSize: 13.sp,
-                                      letterSpacing: 1.5),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
+      body: RefreshIndicator(
+        onRefresh: (() => controller.onRefresh()),
+        child: Container(
+          height: 100.h,
+          width: 100.w,
+          padding: EdgeInsets.only(left: 5.w, right: 5.w),
+          child: Obx(
+            () => controller.isLoading.value == true
+                ? Center(
+                    child: Container(
+                      child: Image.asset("assets/images/mid.gif"),
+                    ),
+                  )
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 7.h,
                       ),
-                    );
-                  },
-                ),
-              ),
-            ))
-          ],
+                      Text(
+                        "Drivers",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 22.sp,
+                            letterSpacing: 1.5),
+                      ),
+                      Expanded(
+                          child: Container(
+                        child: Obx(
+                          () => ListView.builder(
+                            itemCount: controller.driverList.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Padding(
+                                padding: EdgeInsets.only(bottom: 1.h),
+                                child: Container(
+                                  padding: EdgeInsets.only(
+                                      left: 2.w,
+                                      right: 2.w,
+                                      top: 1.h,
+                                      bottom: 1.h),
+                                  decoration:
+                                      BoxDecoration(border: Border.all()),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Text(
+                                            "Driver ID: ",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 13.sp,
+                                                letterSpacing: 1.5),
+                                          ),
+                                          Text(
+                                            controller
+                                                .driverList[index].driverId,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w300,
+                                                fontSize: 13.sp,
+                                                letterSpacing: 1.5),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 1.h,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            "Driver Name: ",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 13.sp,
+                                                letterSpacing: 1.5),
+                                          ),
+                                          Text(
+                                            controller
+                                                .driverList[index].driverName,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w300,
+                                                fontSize: 13.sp,
+                                                letterSpacing: 1.5),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 1.h,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            "Driver Address: ",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 13.sp,
+                                                letterSpacing: 1.5),
+                                          ),
+                                          Text(
+                                            controller.driverList[index]
+                                                .driver_address,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w300,
+                                                fontSize: 13.sp,
+                                                letterSpacing: 1.5),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 1.h,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            "Driver Contact: ",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 13.sp,
+                                                letterSpacing: 1.5),
+                                          ),
+                                          Text(
+                                            controller.driverList[index]
+                                                .driver_contact,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w300,
+                                                fontSize: 13.sp,
+                                                letterSpacing: 1.5),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ))
+                    ],
+                  ),
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColor.mainColors,
-        onPressed: () {
-          controller.drivername.clear();
-          Get.to(() => DriversRegistrationView());
-        },
-        child: Icon(Icons.add_circle),
+      floatingActionButton: Obx(
+        () => controller.isLoading.value == true
+            ? SizedBox()
+            : FloatingActionButton(
+                backgroundColor: AppColor.mainColors,
+                onPressed: () {
+                  controller.drivername.clear();
+                  Get.to(() => DriversRegistrationView());
+                },
+                child: Icon(Icons.add_circle),
+              ),
       ),
     );
   }

@@ -50,6 +50,10 @@ class HomeScreenController extends GetxController {
     super.onClose();
   }
 
+  onRefresh() async {
+    setBalance();
+  }
+
   getPassengersTickets() async {
     var result = await HomeScreenApi.getPassengersTickets();
     passengersTicketList.assignAll(result.reversed.toList());

@@ -16,16 +16,22 @@ class ConductorsListController extends GetxController {
   TextEditingController address = TextEditingController();
   RxString busPlateno = "Plate no".obs;
   RxString busId = "".obs;
+  RxBool isLoading = true.obs;
   @override
   void onInit() async {
     await getConductors();
     await getBus();
+    isLoading(false);
     super.onInit();
   }
 
   @override
   void onClose() {
     super.onClose();
+  }
+
+  onRefresh() async {
+    await getConductors();
   }
 
   getConductors() async {

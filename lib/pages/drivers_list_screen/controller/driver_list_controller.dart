@@ -10,15 +10,21 @@ class DriversListController extends GetxController {
   TextEditingController drivername = TextEditingController();
   TextEditingController contactno = TextEditingController();
   TextEditingController address = TextEditingController();
+  RxBool isLoading = true.obs;
   @override
-  void onInit() {
-    getDrivers();
+  void onInit() async {
+    await getDrivers();
+    isLoading(false);
     super.onInit();
   }
 
   @override
   void onClose() {
     super.onClose();
+  }
+
+  onRefresh() async {
+    getDrivers();
   }
 
   getDrivers() async {

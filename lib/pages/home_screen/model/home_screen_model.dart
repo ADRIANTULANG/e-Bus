@@ -10,8 +10,8 @@ String passengerTicketsModelToJson(List<PassengerTicketsModel> data) =>
 class PassengerTicketsModel {
   PassengerTicketsModel({
     required this.transId,
-    required this.origin,
-    required this.destination,
+    this.origin,
+    this.destination,
     required this.transStatus,
     required this.transFareAmount,
     this.con_name,
@@ -22,8 +22,8 @@ class PassengerTicketsModel {
   String transId;
   String transStatus;
   String transFareAmount;
-  String origin;
-  String destination;
+  String? origin;
+  String? destination;
   String? con_name;
   String? bus_plate_number;
   String? driver_name;
@@ -33,8 +33,8 @@ class PassengerTicketsModel {
         transId: json["trans_id"],
         transStatus: json["trans_status"],
         transFareAmount: json["trans_fare_amount"],
-        origin: json["origin"],
-        destination: json["destination"],
+        origin: json["origin"] ?? "-",
+        destination: json["destination"] ?? "-",
         con_name: json["con_name"] ?? "-",
         bus_plate_number: json["bus_plate_number"] ?? "-",
         driver_name: json["driver_name"] ?? "-",

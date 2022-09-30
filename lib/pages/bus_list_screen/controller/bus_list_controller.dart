@@ -9,13 +9,15 @@ class BusListController extends GetxController {
   TextEditingController plateno = TextEditingController();
   RxList<busModel> busList = <busModel>[].obs;
   List<DriverModel> driversList = <DriverModel>[];
+  RxBool isLoading = true.obs;
 
   RxString driverName = "Driver".obs;
   RxString driverID = "".obs;
   @override
-  void onInit() {
-    getBus();
-    getDrivers();
+  void onInit() async {
+    await getBus();
+    await getDrivers();
+    isLoading(false);
     super.onInit();
   }
 
@@ -27,6 +29,10 @@ class BusListController extends GetxController {
   getBus() async {
     var result = await BusListApi.getBus();
     busList.assignAll(result.reversed.toList());
+  }
+
+  onRefresh() async {
+    await getDrivers();
   }
 
   getDrivers() async {

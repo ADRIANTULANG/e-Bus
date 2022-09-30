@@ -215,7 +215,27 @@ class ReservedTicketView extends GetView<ReservedTicketController> {
             ),
             InkWell(
               onTap: () {
-                Get.to(() => ReservedTicketPaymentOptions());
+                if (controller.destination_lat.value == 0.0 &&
+                    controller.destination_long.value == 0.0) {
+                  Get.snackbar(
+                    "Message",
+                    "Please Choose a destination",
+                    colorText: Colors.white,
+                    backgroundColor: AppColor.mainColors,
+                    snackPosition: SnackPosition.TOP,
+                  );
+                } else if ((controller.origin_long.value == 0.0 &&
+                    controller.origin_lat.value == 0.0)) {
+                  Get.snackbar(
+                    "Message",
+                    "Please Choose an Origin",
+                    colorText: Colors.white,
+                    backgroundColor: AppColor.mainColors,
+                    snackPosition: SnackPosition.TOP,
+                  );
+                } else {
+                  Get.to(() => ReservedTicketPaymentOptions());
+                }
               },
               child: Container(
                 height: 6.h,
