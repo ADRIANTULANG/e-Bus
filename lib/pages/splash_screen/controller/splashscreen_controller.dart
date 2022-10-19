@@ -20,16 +20,16 @@ class SplashScreenController extends GetxController {
       if (Get.find<StorageServices>().storage.read('userID') != null) {
         if (Get.find<StorageServices>().storage.read('usertype') ==
             "Passenger") {
-          Get.to(() => HomeScreenView());
+          Get.offAll(() => HomeScreenView());
         } else if (Get.find<StorageServices>().storage.read('usertype') ==
             "Admin") {
-          Get.to(() => AdminHomeView());
+          Get.offAll(() => AdminHomeView());
         } else if (Get.find<StorageServices>().storage.read('usertype') ==
             "Conductor") {
-          Get.to(() => ConductorsHomeView());
+          Get.offAll(() => ConductorsHomeView());
         }
       } else {
-        Get.to(() => LoginScreenView());
+        Get.offAll(() => LoginScreenView());
       }
     });
   }

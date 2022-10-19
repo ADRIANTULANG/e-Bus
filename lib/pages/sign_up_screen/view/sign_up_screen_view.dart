@@ -79,10 +79,17 @@ class SignUpScreenView extends GetView<SignUpScreenController> {
                 child: TextField(
                   controller: controller.contactno,
                   obscureText: false,
-                  keyboardType: TextInputType.number,
-                  inputFormatters: [
-                    FilteringTextInputFormatter.allow(RegExp('[11234567890.]'))
-                  ],
+                  keyboardType: TextInputType.phone,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  onChanged: (value) {
+                    if (controller.contactno.text.length == 0) {
+                    } else {
+                      if (controller.contactno.text[0] != "9" ||
+                          controller.contactno.text.length > 10) {
+                        controller.contactno.clear();
+                      } else {}
+                    }
+                  },
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5)),
@@ -200,59 +207,80 @@ class SignUpScreenView extends GetView<SignUpScreenController> {
               SizedBox(
                 height: 13.h,
               ),
-              InkWell(
-                onTap: () {
-                  // controller.updatePercentageAndFare();
-                  if (controller.name.text.isEmpty ||
-                      controller.username.text.isEmpty ||
-                      controller.password.text.isEmpty ||
-                      controller.email.text.isEmpty ||
-                      controller.contactno.text.isEmpty ||
-                      controller.repeatpassword.text.isEmpty) {
-                    Get.snackbar(
-                      "Message",
-                      "Missing Input.",
-                      colorText: Colors.white,
-                      backgroundColor: AppColor.mainColors,
-                      snackPosition: SnackPosition.TOP,
-                    );
-                  } else if (controller.email.text.isEmail == false) {
-                    Get.snackbar(
-                      "Message",
-                      "Invalid Email.",
-                      colorText: Colors.white,
-                      backgroundColor: AppColor.mainColors,
-                      snackPosition: SnackPosition.TOP,
-                    );
-                  } else if (controller.repeatpassword.text !=
-                      controller.password.text) {
-                    Get.snackbar(
-                      "Message",
-                      "Password not match.",
-                      colorText: Colors.white,
-                      backgroundColor: AppColor.mainColors,
-                      snackPosition: SnackPosition.TOP,
-                    );
-                  } else {
-                    controller.createAccount();
-                  }
-                },
-                child: Container(
-                  height: 6.5.h,
-                  width: 100.w,
-                  decoration: BoxDecoration(
-                      color: AppColor.mainColors,
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all()),
-                  alignment: Alignment.center,
-                  child: Text(
-                    "REGISTER",
-                    style: TextStyle(
-                        fontSize: 15.sp,
-                        fontWeight: FontWeight.w400,
-                        letterSpacing: 2),
-                  ),
-                ),
+              Obx(
+                () => controller.isCreating.value == false
+                    ? InkWell(
+                        onTap: () {
+                          // SignUpDialog.showDialogOtp(
+                          //     controller: controller,
+                          //     contact: controller.contactno.text);
+                          // controller.updatePercentageAndFare();
+                          if (controller.name.text.isEmpty ||
+                              controller.username.text.isEmpty ||
+                              controller.password.text.isEmpty ||
+                              controller.email.text.isEmpty ||
+                              controller.contactno.text.isEmpty ||
+                              controller.repeatpassword.text.isEmpty) {
+                            Get.snackbar(
+                              "Message",
+                              "Missing Input.",
+                              colorText: Colors.white,
+                              backgroundColor: AppColor.mainColors,
+                              snackPosition: SnackPosition.TOP,
+                            );
+                          } else if (controller.email.text.isEmail == false) {
+                            Get.snackbar(
+                              "Message",
+                              "Invalid Email.",
+                              colorText: Colors.white,
+                              backgroundColor: AppColor.mainColors,
+                              snackPosition: SnackPosition.TOP,
+                            );
+                          } else if (controller.repeatpassword.text !=
+                              controller.password.text) {
+                            Get.snackbar(
+                              "Message",
+                              "Password not match.",
+                              colorText: Colors.white,
+                              backgroundColor: AppColor.mainColors,
+                              snackPosition: SnackPosition.TOP,
+                            );
+                          } else {
+                            print(controller.contactno.text);
+                            controller.verifiyNumber(
+                                contact: controller.contactno.text,
+                                controller: controller);
+                          }
+                        },
+                        child: Container(
+                          height: 6.5.h,
+                          width: 100.w,
+                          decoration: BoxDecoration(
+                              color: AppColor.mainColors,
+                              borderRadius: BorderRadius.circular(5),
+                              border: Border.all()),
+                          alignment: Alignment.center,
+                          child: Text(
+                            "REGISTER",
+                            style: TextStyle(
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.w400,
+                                letterSpacing: 2),
+                          ),
+                        ),
+                      )
+                    : Container(
+                        height: 6.5.h,
+                        width: 100.w,
+                        decoration: BoxDecoration(
+                            color: AppColor.mainColors,
+                            borderRadius: BorderRadius.circular(5),
+                            border: Border.all()),
+                        alignment: Alignment.center,
+                        child: CircularProgressIndicator(
+                          color: Colors.white,
+                        ),
+                      ),
               ),
               SizedBox(
                 height: 2.h,

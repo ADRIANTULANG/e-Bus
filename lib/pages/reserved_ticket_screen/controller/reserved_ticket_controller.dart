@@ -77,12 +77,12 @@ class ReservedTicketController extends GetxController {
     markers.add(Marker(
         markerId: MarkerId(origin),
         position: originLatlng,
-        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRose),
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
         infoWindow: InfoWindow(title: origin)));
     markers.add(Marker(
         markerId: MarkerId(destination),
         position: destinationLatlng,
-        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRose),
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
         infoWindow: InfoWindow(title: destination)));
     LatLngBounds bounds =
         LatLngBounds(southwest: LatLng(0, 0), northeast: LatLng(0, 0));

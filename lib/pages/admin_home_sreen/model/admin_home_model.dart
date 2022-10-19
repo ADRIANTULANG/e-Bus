@@ -60,12 +60,12 @@ class TicketsModel {
   String? driver_name;
 
   factory TicketsModel.fromJson(Map<String, dynamic> json) => TicketsModel(
-        transId: json["trans_id"],
-        transFareAmount: json["trans_fare_amount"],
-        transStatus: json["trans_status"],
+        transId: json["trans_id"] ?? "",
+        transFareAmount: json["trans_fare_amount"] ?? "0.0",
+        transStatus: json["trans_status"] ?? "",
         pasName: json["pas_name"] ?? "Unknown",
-        origin: json["origin"],
-        destination: json["destination"],
+        origin: json["origin"] ?? "",
+        destination: json["destination"] ?? "",
         con_name: json["con_name"] ?? "-",
         bus_plate_number: json["bus_plate_number"] ?? "-",
         driver_name: json["driver_name"] ?? "-",

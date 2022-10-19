@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "817620922084",
+    "project_id": "e-bus-947cb",
+    "storage_bucket": "e-bus-947cb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:817620922084:android:080efeb74bb976384a06f1",
+        "android_client_info": {
+          "package_name": "com.example.ebus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "817620922084-40t8heq5u9collppa3citl7aj5s512jd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ebus",
+            "certificate_hash": "0d347fbdb19f797e869b63a92a4aca2a6d12c32b"
+          }
+        },
+        {
+          "client_id": "817620922084-bosekfvps5s7u6q2f3isnmsfb6ig11k2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAldUMxaFQKILbZFJcS8wj4vUIPVTmCUvI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "817620922084-bosekfvps5s7u6q2f3isnmsfb6ig11k2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

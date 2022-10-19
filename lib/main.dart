@@ -1,6 +1,7 @@
 import 'package:ebus/pages/splash_screen/view/splashscreen_view.dart';
 import 'package:ebus/services/location_services.dart';
 import 'package:ebus/services/storage_services.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -9,7 +10,7 @@ import 'constant/color_class.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await Firebase.initializeApp();
   // await Firebase.initializeApp();
 
   await GetStorage.init();

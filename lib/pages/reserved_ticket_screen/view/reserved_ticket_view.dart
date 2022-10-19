@@ -233,6 +233,15 @@ class ReservedTicketView extends GetView<ReservedTicketController> {
                     backgroundColor: AppColor.mainColors,
                     snackPosition: SnackPosition.TOP,
                   );
+                } else if (controller.origin.value ==
+                    controller.destination.value) {
+                  Get.snackbar(
+                    "Message",
+                    "Origin and destination must not be the same.",
+                    colorText: Colors.white,
+                    backgroundColor: AppColor.mainColors,
+                    snackPosition: SnackPosition.TOP,
+                  );
                 } else {
                   Get.to(() => ReservedTicketPaymentOptions());
                 }

@@ -18,7 +18,7 @@ class AdminHomeApi {
         Uri.parse('${AppEndpoint.endPointDomain}/get-all-tickets.php'),
         body: {},
       );
-
+      print(response.body);
       if (jsonDecode(response.body)['message'] == "Success") {
         return ticketsModelFromJson(
             jsonEncode(jsonDecode(response.body)['data']));
@@ -45,7 +45,7 @@ class AdminHomeApi {
       );
       return [];
     } catch (e) {
-      print(e);
+      // print(e);
       Get.snackbar(
         "Get Tickets Error",
         "Oops, something went wrong. Please try again later.",
