@@ -23,7 +23,6 @@ class ReservedTicketController extends GetxController {
   RxBool isPaymaya = false.obs;
   RxBool isEwallet = false.obs;
   RxBool isSubscribing = false.obs;
-
   RxString isSelectedPaymentGateway = "".obs;
 
   RxString origin = "".obs;

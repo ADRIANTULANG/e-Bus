@@ -76,7 +76,7 @@ dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/images/big.gif"
+  image_path: "assets/images/launcherlogo.png"
 
 
 

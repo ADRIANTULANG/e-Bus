@@ -184,7 +184,7 @@ class AdminHomeView extends GetView<AdminHomeController> {
                           ),
                         ),
                         Container(
-                          height: 6.h,
+                          height: 4.h,
                           width: 100.w,
                           child: Row(
                             children: [
@@ -311,7 +311,7 @@ class AdminHomeView extends GetView<AdminHomeController> {
                           ),
                         ),
                         Container(
-                          height: 6.h,
+                          height: 4.h,
                           width: 100.w,
                           child: Row(
                             children: [
@@ -355,55 +355,61 @@ class AdminHomeView extends GetView<AdminHomeController> {
                             ],
                           ),
                         ),
-                        SizedBox(
-                          height: 2.h,
+
+                        Container(
+                          width: 55.w,
+                          height: 35.w,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  fit: BoxFit.fitWidth,
+                                  image: AssetImage("assets/images/big.gif"))),
                         ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Container(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Welcome",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 15.sp,
-                                          letterSpacing: 1.5),
-                                    ),
-                                    Text(
-                                      "to E - Bus",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 15.sp,
-                                          letterSpacing: 1.5),
-                                    ),
-                                    Text(
-                                      "Fare Collection",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 15.sp,
-                                          letterSpacing: 1.5),
-                                    ),
-                                    Text(
-                                      "Payment System",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 15.sp,
-                                          letterSpacing: 1.5),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Container(
-                              width: 40.w,
-                              height: 30.w,
-                              child: Image.asset("assets/images/big.gif"),
-                            ),
-                          ],
-                        ),
+                        // Row(
+                        //   children: [
+                        //     Expanded(
+                        //       child: Container(
+                        //         child: Column(
+                        //           crossAxisAlignment: CrossAxisAlignment.start,
+                        //           children: [
+                        //             Text(
+                        //               "Welcome",
+                        //               style: TextStyle(
+                        //                   fontWeight: FontWeight.w600,
+                        //                   fontSize: 15.sp,
+                        //                   letterSpacing: 1.5),
+                        //             ),
+                        //             Text(
+                        //               "to E - Bus",
+                        //               style: TextStyle(
+                        //                   fontWeight: FontWeight.w600,
+                        //                   fontSize: 15.sp,
+                        //                   letterSpacing: 1.5),
+                        //             ),
+                        //             Text(
+                        //               "Fare Collection",
+                        //               style: TextStyle(
+                        //                   fontWeight: FontWeight.w600,
+                        //                   fontSize: 15.sp,
+                        //                   letterSpacing: 1.5),
+                        //             ),
+                        //             Text(
+                        //               "Payment System",
+                        //               style: TextStyle(
+                        //                   fontWeight: FontWeight.w600,
+                        //                   fontSize: 15.sp,
+                        //                   letterSpacing: 1.5),
+                        //             ),
+                        //           ],
+                        //         ),
+                        //       ),
+                        //     ),
+                        //     Container(
+                        //       width: 40.w,
+                        //       height: 30.w,
+                        //       child: Image.asset("assets/images/big.gif"),
+                        //     ),
+                        //   ],
+                        // ),
                         SizedBox(
                           height: 1.h,
                         ),
