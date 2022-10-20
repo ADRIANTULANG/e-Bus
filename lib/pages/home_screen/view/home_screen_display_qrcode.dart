@@ -147,6 +147,26 @@ class HomeScreenQrViewer extends GetView<HomeScreenController> {
                       ),
                     ),
                   ),
+                  Text(
+                    "Date: ",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w300,
+                        fontSize: 9.sp,
+                        letterSpacing: 1.5),
+                  ),
+                  Container(
+                    width: 100.w,
+                    child: Obx(
+                      () => Text(
+                        controller.dateCreated.value,
+                        style: TextStyle(
+                            overflow: TextOverflow.ellipsis,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 12.sp,
+                            letterSpacing: 1.5),
+                      ),
+                    ),
+                  ),
                   SizedBox(
                     height: 2.h,
                   ),

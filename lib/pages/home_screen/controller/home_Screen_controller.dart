@@ -1,6 +1,7 @@
 import 'package:ebus/pages/home_screen/api/home_screen_api.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import '../../../constant/color_class.dart';
 import '../../../services/storage_services.dart';
@@ -21,6 +22,7 @@ class HomeScreenController extends GetxController {
   RxString destination = "".obs;
   RxString fareAmount = "".obs;
   RxString status = "".obs;
+  RxString dateCreated = "".obs;
 
   RxBool isCheckGcash = false.obs;
   RxBool isPaymaya = false.obs;
@@ -62,6 +64,8 @@ class HomeScreenController extends GetxController {
   getTicketData({required String ticketID}) async {
     var result = await HomeScreenApi.getTicketDataResult(ticketID: ticketID);
     if (result.isNotEmpty) {
+      dateCreated.value =
+          DateFormat.yMMMEd().format(result[0].transDateCreated);
       passengerName.value = result[0].pasName;
       origin.value = result[0].origin;
       destination.value = result[0].destination;

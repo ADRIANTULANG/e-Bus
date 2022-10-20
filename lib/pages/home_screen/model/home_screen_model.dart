@@ -61,6 +61,7 @@ String HomeScreenQrViewerModelToJson(List<HomeScreenQrViewerModel> data) =>
 
 class HomeScreenQrViewerModel {
   HomeScreenQrViewerModel({
+    required this.transDateCreated,
     required this.transId,
     required this.transFareAmount,
     required this.origin,
@@ -68,7 +69,7 @@ class HomeScreenQrViewerModel {
     required this.pasName,
     required this.transStatus,
   });
-
+  DateTime transDateCreated;
   String transId;
   String transFareAmount;
   String origin;
@@ -84,6 +85,7 @@ class HomeScreenQrViewerModel {
         destination: json["destination"],
         pasName: json["pas_name"],
         transStatus: json["trans_status"],
+        transDateCreated: DateTime.parse(json["trans_date_created"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -93,5 +95,7 @@ class HomeScreenQrViewerModel {
         "destination": destination,
         "pas_name": pasName,
         "trans_status": transStatus,
+        "trans_date_created":
+            "${transDateCreated.year.toString().padLeft(4, '0')}-${transDateCreated.month.toString().padLeft(2, '0')}-${transDateCreated.day.toString().padLeft(2, '0')}",
       };
 }
