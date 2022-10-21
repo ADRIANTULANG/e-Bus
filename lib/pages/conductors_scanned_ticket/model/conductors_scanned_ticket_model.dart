@@ -11,28 +11,28 @@ class ConductorsScannedTicket {
   ConductorsScannedTicket({
     required this.transId,
     required this.transFareAmount,
-    required this.origin,
-    required this.destination,
-    required this.pasName,
-    required this.bus_plate_number,
-    required this.driver_name,
+    this.origin,
+    this.destination,
+    this.pasName,
+    this.bus_plate_number,
+    this.driver_name,
   });
 
   String transId;
   String transFareAmount;
-  String origin;
-  String destination;
-  String pasName;
-  String bus_plate_number;
-  String driver_name;
+  String? origin;
+  String? destination;
+  String? pasName;
+  String? bus_plate_number;
+  String? driver_name;
 
   factory ConductorsScannedTicket.fromJson(Map<String, dynamic> json) =>
       ConductorsScannedTicket(
         transId: json["trans_id"],
         transFareAmount: json["trans_fare_amount"],
-        origin: json["origin"],
-        destination: json["destination"],
-        bus_plate_number: json["bus_plate_number"],
+        origin: json["origin"] ?? "",
+        destination: json["destination"] ?? "",
+        bus_plate_number: json["bus_plate_number"] ?? "",
         driver_name: json["driver_name"] ?? "-",
         pasName: json["pas_name"] ?? "Unkown",
       );

@@ -44,6 +44,11 @@ class HomeScreenController extends GetxController {
     passengerBalance.value = await double.parse(
             Get.find<StorageServices>().storage.read('pasBalance'))
         .toStringAsFixed(1);
+    var result = await HomeScreenApi.getPassengerDetails(
+        passengerID: Get.find<StorageServices>().storage.read('pasId'));
+    if (result != [] || result != null) {
+      passengerBalance.value = result[0]['pas_balance'];
+    }
     await getPassengersTickets();
   }
 

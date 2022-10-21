@@ -118,7 +118,7 @@ class ConductorsScannedTicketView
                                                 child: Text(
                                                   controller
                                                       .scannedTicketList[index]
-                                                      .origin,
+                                                      .origin!,
                                                   style: TextStyle(
                                                       overflow:
                                                           TextOverflow.ellipsis,
@@ -151,7 +151,7 @@ class ConductorsScannedTicketView
                                                 child: Text(
                                                   controller
                                                       .scannedTicketList[index]
-                                                      .destination,
+                                                      .destination!,
                                                   style: TextStyle(
                                                       overflow:
                                                           TextOverflow.ellipsis,
@@ -184,7 +184,7 @@ class ConductorsScannedTicketView
                                                 child: Text(
                                                   controller
                                                       .scannedTicketList[index]
-                                                      .pasName,
+                                                      .pasName!,
                                                   style: TextStyle(
                                                       overflow:
                                                           TextOverflow.ellipsis,
@@ -217,7 +217,7 @@ class ConductorsScannedTicketView
                                                 child: Text(
                                                   controller
                                                       .scannedTicketList[index]
-                                                      .driver_name,
+                                                      .driver_name!,
                                                   style: TextStyle(
                                                       overflow:
                                                           TextOverflow.ellipsis,
@@ -250,7 +250,7 @@ class ConductorsScannedTicketView
                                                 child: Text(
                                                   controller
                                                       .scannedTicketList[index]
-                                                      .bus_plate_number,
+                                                      .bus_plate_number!,
                                                   style: TextStyle(
                                                       overflow:
                                                           TextOverflow.ellipsis,

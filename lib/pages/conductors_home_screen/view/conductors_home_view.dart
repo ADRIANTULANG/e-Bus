@@ -6,6 +6,7 @@ import 'package:sizer/sizer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../conductors_scanned_ticket/view/conductors_scanned_ticket_view.dart';
 import '../../create_ticket_screen/view/create_ticket_view.dart';
+import '../../qr_code_scan_passenger_qr/view/qr_code_scan_passenger_qr.dart';
 import '../../qr_code_screen/view/qr_code_view.dart';
 import '../controller/conductors_home_controller.dart';
 
@@ -63,6 +64,45 @@ class ConductorsHomeView extends GetView<ConductorsHomeController> {
                               ),
                             ),
                             Expanded(child: SizedBox()),
+                            InkWell(
+                              onTap: () {
+                                Get.to(() => QrCodeScanPassengerQrView());
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(1.w),
+                                decoration: BoxDecoration(
+                                    color: AppColor.mainColors,
+                                    borderRadius: BorderRadius.circular(3),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          blurRadius: 4,
+                                          spreadRadius: 1,
+                                          color: Colors.grey),
+                                    ]),
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.qr_code_scanner_rounded,
+                                      size: 13.sp,
+                                    ),
+                                    SizedBox(
+                                      width: 1.w,
+                                    ),
+                                    Text(
+                                      "Top up",
+                                      style: TextStyle(
+                                        letterSpacing: 1.5,
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 2.w,
+                            ),
                             InkWell(
                               onTap: () {
                                 ConductorsHomeDialog.showConductorUpdateAccount(

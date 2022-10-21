@@ -21,7 +21,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
       onWillPop: () => HomeScreenDialog.showDialoglogOut(),
       child: Scaffold(
         body: Container(
-          padding: EdgeInsets.only(left: 5.w, right: 5.w),
+          padding: EdgeInsets.only(left: 4.w, right: 4.w),
           child: Obx(
             () => controller.isLoading.value == true
                 ? Center(

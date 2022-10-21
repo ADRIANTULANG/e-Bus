@@ -205,4 +205,50 @@ class HomeScreenApi {
       return false;
     }
   }
+
+  static Future getPassengerDetails({required String passengerID}) async {
+    try {
+      var response = await client.post(
+        Uri.parse('${AppEndpoint.endPointDomain}/get-passenger-details.php'),
+        body: {
+          "accountID": passengerID,
+        },
+      );
+
+      if (jsonDecode(response.body)['message'] == "Success") {
+        return (jsonDecode(response.body)['data']);
+      } else {
+        return [];
+      }
+    } on TimeoutException catch (_) {
+      Get.snackbar(
+        "Get Passenger Details Error: Timeout",
+        "Oops, something went wrong. Please try again later.",
+        colorText: Colors.white,
+        backgroundColor: AppColor.mainColors,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      return [];
+    } on SocketException catch (_) {
+      print(_);
+      Get.snackbar(
+        "Get Passenger Details Error: Socket",
+        "Oops, something went wrong. Please try again later.",
+        colorText: Colors.white,
+        backgroundColor: AppColor.mainColors,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      return [];
+    } catch (e) {
+      print(e);
+      Get.snackbar(
+        "Get Passenger Details Error",
+        "Oops, something went wrong. Please try again later.",
+        colorText: Colors.white,
+        backgroundColor: AppColor.mainColors,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      return [];
+    }
+  }
 }
