@@ -225,7 +225,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                             child: InkWell(
                                               onTap: () async {
                                                 await controller.getTicketData(
-                                                    ticketID: controller
+                                                    ticketId: controller
                                                         .passengersTicketList[
                                                             index]
                                                         .transId);

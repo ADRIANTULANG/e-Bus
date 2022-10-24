@@ -67,9 +67,10 @@ class HomeScreenController extends GetxController {
     passengersTicketList.assignAll(result.reversed.toList());
   }
 
-  getTicketData({required String ticketID}) async {
-    var result = await HomeScreenApi.getTicketDataResult(ticketID: ticketID);
+  getTicketData({required String ticketId}) async {
+    var result = await HomeScreenApi.getTicketDataResult(ticketID: ticketId);
     if (result.isNotEmpty) {
+      ticketID.value = ticketId;
       dateCreated.value =
           DateFormat.yMMMEd().format(result[0].transDateCreated);
       passengerName.value = result[0].pasName;

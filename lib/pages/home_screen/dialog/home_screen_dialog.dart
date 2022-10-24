@@ -71,7 +71,7 @@ class HomeScreenDialog {
     Get.dialog(AlertDialog(
       contentPadding: EdgeInsets.all(3.w),
       content: Container(
-        height: 35.h,
+        height: 50.h,
         width: 90.w,
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           SizedBox(
@@ -80,7 +80,7 @@ class HomeScreenDialog {
           Text(
             "Top up Balance",
             style: TextStyle(
-                fontSize: 14.sp, fontWeight: FontWeight.w400, letterSpacing: 2),
+                fontSize: 14.sp, fontWeight: FontWeight.w500, letterSpacing: 2),
           ),
           SizedBox(
             height: 2.h,
@@ -96,6 +96,42 @@ class HomeScreenDialog {
           SizedBox(
             height: 2.h,
           ),
+          Text(
+            "Show your QR code to the conductor",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontSize: 10.sp, fontWeight: FontWeight.w300, letterSpacing: 2),
+          ),
+          SizedBox(
+            height: 2.h,
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 8.w, right: 8.w),
+            child: InkWell(
+              onTap: () {
+                Get.back();
+              },
+              child: Container(
+                height: 5.h,
+                width: 90.w,
+                decoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                alignment: Alignment.center,
+                child: Text(
+                  "Back",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 13.sp,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w300,
+                      letterSpacing: 2),
+                ),
+              ),
+            ),
+          ),
+
           // Text(
           //   "Add Balance",
           //   style: TextStyle(
